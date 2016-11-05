@@ -1,17 +1,21 @@
 package net.sothatsit.devathon2016.blocks;
 
-import net.sothatsit.devathon2016.Pair;
+import net.sothatsit.devathon2016.util.Pair;
 
 import java.util.List;
 
 public class Schematic {
 
-    private Offset anchorPoint;
     private List<Pair<Offset, BlockData>> blocks;
 
-    public Schematic(Offset anchorPoint, List<Pair<Offset, BlockData>> blocks) {
-        this.anchorPoint = anchorPoint;
+    public Schematic(List<Pair<Offset, BlockData>> blocks) {
         this.blocks = blocks;
+    }
+
+    public void place(/* Location */) {
+        for(Pair<Offset, BlockData> pair : this.blocks) {
+
+        }
     }
 
     public static Schematic loadFrom() {

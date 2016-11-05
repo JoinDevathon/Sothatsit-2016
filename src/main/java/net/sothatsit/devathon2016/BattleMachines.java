@@ -1,6 +1,6 @@
 package net.sothatsit.devathon2016;
 
-public class BattleMachines extends JavaPlugin {
+public class BattleMachines {}/* extends JavaPlugin {
 
     @Override
     public void onEnable() {
@@ -12,4 +12,4 @@ public class BattleMachines extends JavaPlugin {
 
     }
 
-}
+}*/

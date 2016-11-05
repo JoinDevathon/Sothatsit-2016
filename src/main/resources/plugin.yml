@@ -1,7 +1,7 @@
-name: Devathon Project
+name: Battle Machines
 description: A project for the Devathon contest
 version: 1.0.0
-author: Your Name Here
+author: Sothatsit
 
-main: org.devathon.contest2016.DevathonPlugin
+main: net.sothatsit.devathon2016.BattleMachines
 
