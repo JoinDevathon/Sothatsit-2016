@@ -1,5 +1,8 @@
 package net.sothatsit.devathon2016.blocks;
 
+import org.bukkit.Location;
+import org.bukkit.configuration.ConfigurationSection;
+
 public class Offset {
 
     private int x;
@@ -24,10 +27,27 @@ public class Offset {
         return this.z;
     }
 
-    public void saveTo() {}
+    public Location addTo(Location location) {
+        return location.add(this.x, this.y, this.z);
+    }
 
-    public static Offset loadFrom() {
-        return null;
+    public void saveTo(ConfigurationSection section) {
+        section.set("x", this.x);
+        section.set("y", this.y);
+        section.set("z", this.z);
+    }
+
+    public static Offset loadFrom(ConfigurationSection section) {
+        if(!section.isSet("x") || !section.isSet("y") || !section.isSet("z")
+                || !section.isInt("x") || !section.isInt("y") || !section.isInt("z")) {
+            return null;
+        }
+
+        int x = section.getInt("x");
+        int y = section.getInt("y");
+        int z = section.getInt("z");
+
+        return new Offset(x, y, z);
     }
 
 }
