@@ -11,4 +11,4 @@ commands:
   bmparts:
     description: 'Add new Battle Machines parts'
   bmachine:
-    description: 'Get a new battle machine'
+    description: 'Get a new battle parts'

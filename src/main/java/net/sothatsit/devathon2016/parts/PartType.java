@@ -1,4 +1,4 @@
-package net.sothatsit.devathon2016.machine;
+package net.sothatsit.devathon2016.parts;
 
 public enum PartType {
 

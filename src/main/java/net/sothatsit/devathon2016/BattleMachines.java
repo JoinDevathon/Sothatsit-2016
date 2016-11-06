@@ -1,7 +1,7 @@
 package net.sothatsit.devathon2016;
 
-import net.sothatsit.devathon2016.machine.PartManager;
-import net.sothatsit.devathon2016.machine.PartsCommand;
+import net.sothatsit.devathon2016.parts.PartManager;
+import net.sothatsit.devathon2016.parts.PartsCommand;
 import net.sothatsit.devathon2016.selection.SelectionManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;

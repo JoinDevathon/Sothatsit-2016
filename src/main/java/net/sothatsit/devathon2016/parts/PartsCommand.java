@@ -1,4 +1,4 @@
-package net.sothatsit.devathon2016.machine;
+package net.sothatsit.devathon2016.parts;
 
 import net.sothatsit.devathon2016.blocks.Offset;
 import net.sothatsit.devathon2016.blocks.Schematic;
@@ -93,7 +93,7 @@ public class PartsCommand implements CommandExecutor {
         this.partManager.addPart(part);
         this.partManager.saveParts();
 
-        this.send(sender, "&aRegistered a new " + type.getName() + " machine part!");
+        this.send(sender, "&aRegistered a new " + type.getName() + " parts part!");
         return true;
     }
 
