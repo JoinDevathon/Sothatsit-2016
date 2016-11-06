@@ -47,14 +47,6 @@ public class PartsCommand implements CommandExecutor {
 
         // TEST COMMAND
         if(args[0].equalsIgnoreCase("place")) {
-            Random random = new Random();
-            MachinePart[] parts = this.partManager.getParts().toArray(new MachinePart[0]);
-
-            if(parts.length == 0) {
-                this.send(sender, "&cThere are no parts");
-                return true;
-            }
-
             if(!(sender instanceof Player)) {
                 this.send(sender, "&cSorry, you must be a player to run this command.");
                 return true;
@@ -62,23 +54,25 @@ public class PartsCommand implements CommandExecutor {
 
             Player player = (Player) sender;
 
-            MachinePart part = parts[random.nextInt(parts.length)];
+            for(PartType type : PartType.values()) {
+                MachinePart part = this.partManager.getRandomPart(type);
 
-            Model model = part.generateModel(player.getLocation());
+                Model model = part.generateModel(player.getLocation());
 
-            new BukkitRunnable() {
-                private int index = 0;
+                new BukkitRunnable() {
+                    private int index = 0;
 
-                @Override
-                public void run() {
-                    index++;
-                    index %= part.getOffsetCount();
+                    @Override
+                    public void run() {
+                        index++;
+                        index %= part.getOffsetCount();
 
-                    model.setOffset(part.getOffset(index));
-                }
-            }.runTaskTimer(this.plugin, 10, 10);
+                        model.setOffset(part.getOffset(index));
+                    }
+                }.runTaskTimer(this.plugin, 10, 10);
+            }
 
-            this.send(sender, "&aPlaced a " + part.getType().getName() + " part");
+            this.send(sender, "&aPlaced a Battle Machine");
             return true;
         }
 

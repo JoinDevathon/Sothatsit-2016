@@ -24,7 +24,7 @@ public class Model {
 
     public Model(Location location, Offset offset, Set<Pair<Offset, ArmorStand>> armorStands) {
         this.location = location;
-        this.offset = offset;
+        this.offset = offset.multiply(ARMOUR_STAND_BLOCK_SIZE);
         this.armorStands = armorStands;
     }
 
@@ -35,7 +35,7 @@ public class Model {
     }
 
     public void setOffset(Offset offset) {
-        this.offset = offset;
+        this.offset = offset.multiply(ARMOUR_STAND_BLOCK_SIZE);
 
         this.recalcPositions();
     }
