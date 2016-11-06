@@ -1,6 +1,6 @@
 package net.sothatsit.devathon2016.machine;
 
-public enum PieceType {
+public enum PartType {
 
     LEFT_LEG,
     RIGHT_LEG,
@@ -12,8 +12,8 @@ public enum PieceType {
         return this.name().toLowerCase().replace('_', ' ');
     }
 
-    public static PieceType fromName(String name) {
-        return PieceType.valueOf(name.toUpperCase().replace(' ', '_'));
+    public static PartType fromName(String name) {
+        return PartType.valueOf(name.toUpperCase().replace(' ', '_'));
     }
 
 }

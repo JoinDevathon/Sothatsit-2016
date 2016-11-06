@@ -9,3 +9,6 @@ commands:
   bmselect:
     description: 'Make a Battle Machines selection'
     default: op
+  bmachines:
+    description: 'Add new Battle Machines parts'
+    default: op

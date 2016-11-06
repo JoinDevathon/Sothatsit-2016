@@ -8,19 +8,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class MachinePiece {
+public class MachinePart {
 
-    private PieceType type;
+    private PartType type;
     private Offset[] offsets;
     private Schematic schematic;
 
-    public MachinePiece(PieceType type, Offset[] offsets, Schematic schematic) {
+    public MachinePart(PartType type, Offset[] offsets, Schematic schematic) {
         this.type = type;
         this.offsets = offsets;
         this.schematic = schematic;
     }
 
-    public PieceType getType() {
+    public PartType getType() {
         return this.type;
     }
 
@@ -49,14 +49,14 @@ public class MachinePiece {
         this.schematic.saveTo(section);
     }
 
-    public static MachinePiece loadFrom(ConfigurationSection section, Logger logger) {
+    public static MachinePart loadFrom(ConfigurationSection section, Logger logger) {
         if(!section.isSet("type") || !section.isSet("offsets")
                 || !section.isString("type") || !section.isList("offsets")) {
             logger.info("Type or Offsets unset at \"" + section.getCurrentPath() + "\"");
             return null;
         }
 
-        PieceType type = PieceType.fromName(section.getString("type"));
+        PartType type = PartType.fromName(section.getString("type"));
 
         if(type == null) {
             logger.info("Unable to load piece type from \"" + section.getCurrentPath() + "\"");
@@ -84,7 +84,7 @@ public class MachinePiece {
             return null;
         }
 
-        return new MachinePiece(type, offsets, schematic);
+        return new MachinePart(type, offsets, schematic);
     }
 
 }
