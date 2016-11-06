@@ -9,11 +9,11 @@ public enum PartType {
     RIGHT_ARM;
 
     public String getName() {
-        return this.name().toLowerCase().replace('_', ' ');
+        return this.name().toLowerCase();
     }
 
     public static PartType fromName(String name) {
-        return PartType.valueOf(name.toUpperCase().replace(' ', '_'));
+        return PartType.valueOf(name.toUpperCase());
     }
 
 }

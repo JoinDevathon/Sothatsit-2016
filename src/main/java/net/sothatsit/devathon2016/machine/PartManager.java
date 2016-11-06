@@ -1,21 +1,21 @@
 package net.sothatsit.devathon2016.machine;
 
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
+import net.sothatsit.devathon2016.BattleMachines;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.*;
 import java.util.logging.Logger;
 
-public class PartManager implements CommandExecutor {
+public class PartManager {
+
+    private BattleMachines plugin;
 
     private Random random = new Random();
     private Set<MachinePart> parts = new HashSet<>();
 
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        return false;
+    public PartManager(BattleMachines plugin) {
+        this.plugin = plugin;
     }
 
     public MachinePart getRandomPart(PartType type) {
@@ -40,6 +40,22 @@ public class PartManager implements CommandExecutor {
         return parts;
     }
 
+    public void addPart(MachinePart part) {
+        this.parts.add(part);
+    }
+
+    public void saveParts() {
+        FileConfiguration config = this.plugin.getConfig();
+
+        for(String key : config.getKeys(false)) {
+            config.set(key, null);
+        }
+
+        this.saveParts(config);
+
+        this.plugin.saveConfig();
+    }
+
     public void saveParts(ConfigurationSection section) {
         int partNo = 0;
 
@@ -50,6 +66,10 @@ public class PartManager implements CommandExecutor {
 
             partNo++;
         }
+    }
+
+    public void reloadParts() {
+        this.reloadParts(this.plugin.getConfig(), this.plugin.getLogger());
     }
 
     public void reloadParts(ConfigurationSection section, Logger logger) {

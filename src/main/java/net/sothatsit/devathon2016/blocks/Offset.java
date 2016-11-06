@@ -1,7 +1,6 @@
 package net.sothatsit.devathon2016.blocks;
 
 import org.bukkit.Location;
-import org.bukkit.configuration.ConfigurationSection;
 
 public class Offset {
 

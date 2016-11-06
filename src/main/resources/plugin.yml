@@ -8,7 +8,7 @@ main: net.sothatsit.devathon2016.BattleMachines
 commands:
   bmselect:
     description: 'Make a Battle Machines selection'
-    default: op
-  bmachines:
+  bmparts:
     description: 'Add new Battle Machines parts'
-    default: op
+  bmachine:
+    description: 'Get a new battle machine'
