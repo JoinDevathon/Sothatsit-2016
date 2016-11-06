@@ -27,7 +27,7 @@ public class Offset {
     }
 
     public Location addTo(Location location) {
-        return location.add(this.x, this.y, this.z);
+        return location.clone().add(this.x, this.y, this.z);
     }
 
     public Offset subtract(Offset other) {
