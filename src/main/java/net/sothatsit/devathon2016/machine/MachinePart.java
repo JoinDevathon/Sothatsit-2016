@@ -52,14 +52,14 @@ public class MachinePart {
     public static MachinePart loadFrom(ConfigurationSection section, Logger logger) {
         if(!section.isSet("type") || !section.isSet("offsets")
                 || !section.isString("type") || !section.isList("offsets")) {
-            logger.info("Type or Offsets unset at \"" + section.getCurrentPath() + "\"");
+            logger.severe("Type or Offsets unset at \"" + section.getCurrentPath() + "\"");
             return null;
         }
 
         PartType type = PartType.fromName(section.getString("type"));
 
         if(type == null) {
-            logger.info("Unable to load piece type from \"" + section.getCurrentPath() + "\"");
+            logger.severe("Unable to load piece type from \"" + section.getCurrentPath() + "\"");
             return null;
         }
 
@@ -71,7 +71,7 @@ public class MachinePart {
             Offset offset = Offset.fromString(offsetString);
 
             if(offset == null) {
-                logger.info("Unable to load offset from \"" + section.getCurrentPath() + "\"");
+                logger.severe("Unable to load offset from \"" + section.getCurrentPath() + "\"");
                 return null;
             }
 
