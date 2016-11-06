@@ -13,6 +13,9 @@ public class Machine {
 
     private static final Random random = new Random();
 
+    private static final float NO_TURN_WINDOW = 20f;
+    private static final float TURN_SPEED = 4f;
+
     private Player player;
 
     private Location location;
@@ -77,7 +80,18 @@ public class Machine {
         this.leftArm.tick();
         this.rightArm.tick();
 
-        this.setYaw(this.yaw + 5f);
+        float playerYaw = this.player.getEyeLocation().getYaw();
+        float relativeYaw = (this.yaw - playerYaw + 180f) % 360f;
+
+        while(relativeYaw >= 180f) {
+            relativeYaw -= 360f;
+        }
+
+        if(relativeYaw < -NO_TURN_WINDOW) {
+            this.setYaw(this.yaw + TURN_SPEED);
+        } else if(relativeYaw > NO_TURN_WINDOW) {
+            this.setYaw(this.yaw - TURN_SPEED);
+        }
     }
 
     public void remove() {
