@@ -82,7 +82,6 @@ public class Model {
             armorStand.setHelmet(block);
             armorStand.setVisible(false);
             armorStand.setGravity(false);
-            armorStand.setMarker(true);
 
             armorStands.add(new Pair<>(blockOffset, armorStand));
         }

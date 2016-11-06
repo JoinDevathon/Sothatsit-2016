@@ -77,7 +77,6 @@ public class MachineManager implements Listener, Runnable {
 
         seat.setVisible(false);
         seat.setGravity(false);
-        seat.setMarker(true);
 
         MovingModel leftLeg = this.generateMovingModel(location, PartType.LEFT_LEG);
         MovingModel rightLeg = this.generateMovingModel(location, PartType.RIGHT_LEG);
