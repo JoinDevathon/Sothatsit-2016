@@ -31,6 +31,13 @@ public class PartsCommand implements CommandExecutor {
             return true;
         }
 
+        if(args[0].equalsIgnoreCase("reload")) {
+            this.partManager.reloadParts();
+
+            this.send(sender, "&aReloaded the parts config.");
+            return true;
+        }
+
         PartType type = PartType.fromName(args[0]);
 
         if(type == null) {
