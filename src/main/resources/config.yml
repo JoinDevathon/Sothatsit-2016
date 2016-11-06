@@ -1,0 +1,204 @@
+part0:
+  type: right_leg
+  offsets:
+  - 0.0 0.0 0.0
+  index0:
+    offset: 2.0 -2.0 -1.0
+    type: iron_block
+    data: 0
+  index1:
+    offset: 2.0 -2.0 0.0
+    type: iron_block
+    data: 0
+  index2:
+    offset: 2.0 -2.0 1.0
+    type: iron_block
+    data: 0
+  index3:
+    offset: 2.0 -1.0 -1.0
+    type: step
+    data: 5
+  index4:
+    offset: 2.0 -1.0 0.0
+    type: smooth_brick
+    data: 0
+  index5:
+    offset: 2.0 -1.0 1.0
+    type: step
+    data: 5
+part1:
+  type: right_arm
+  offsets:
+  - 0.0 0.0 0.0
+  index0:
+    offset: 2.0 3.0 -2.0
+    type: smooth_brick
+    data: 3
+  index1:
+    offset: 2.0 3.0 -1.0
+    type: iron_block
+    data: 0
+  index2:
+    offset: 2.0 3.0 0.0
+    type: iron_block
+    data: 0
+  index3:
+    offset: 2.0 3.0 1.0
+    type: smooth_brick
+    data: 0
+  index4:
+    offset: 2.0 4.0 0.0
+    type: step
+    data: 5
+  index5:
+    offset: 3.0 3.0 0.0
+    type: smooth_brick
+    data: 0
+part2:
+  type: left_arm
+  offsets:
+  - 0.0 0.0 0.0
+  index0:
+    offset: -3.0 3.0 0.0
+    type: smooth_brick
+    data: 0
+  index1:
+    offset: -2.0 3.0 -2.0
+    type: smooth_brick
+    data: 3
+  index2:
+    offset: -2.0 3.0 -1.0
+    type: iron_block
+    data: 0
+  index3:
+    offset: -2.0 3.0 0.0
+    type: iron_block
+    data: 0
+  index4:
+    offset: -2.0 3.0 1.0
+    type: smooth_brick
+    data: 0
+  index5:
+    offset: -2.0 4.0 0.0
+    type: step
+    data: 5
+part3:
+  type: body
+  offsets:
+  - 0.0 0.0 0.0
+  index0:
+    offset: -1.0 -1.0 0.0
+    type: iron_block
+    data: 0
+  index1:
+    offset: -1.0 0.0 -1.0
+    type: step
+    data: 5
+  index2:
+    offset: -1.0 0.0 0.0
+    type: iron_block
+    data: 0
+  index3:
+    offset: -1.0 0.0 1.0
+    type: step
+    data: 5
+  index4:
+    offset: -1.0 1.0 1.0
+    type: smooth_brick
+    data: 0
+  index5:
+    offset: -1.0 2.0 0.0
+    type: smooth_brick
+    data: 0
+  index6:
+    offset: -1.0 3.0 0.0
+    type: step
+    data: 5
+  index7:
+    offset: 0.0 -1.0 -1.0
+    type: iron_block
+    data: 0
+  index8:
+    offset: 0.0 -1.0 0.0
+    type: iron_block
+    data: 0
+  index9:
+    offset: 0.0 -1.0 1.0
+    type: iron_block
+    data: 0
+  index10:
+    offset: 0.0 0.0 1.0
+    type: iron_block
+    data: 0
+  index11:
+    offset: 0.0 1.0 1.0
+    type: iron_block
+    data: 0
+  index12:
+    offset: 0.0 2.0 -1.0
+    type: step
+    data: 5
+  index13:
+    offset: 0.0 2.0 0.0
+    type: smooth_brick
+    data: 0
+  index14:
+    offset: 0.0 2.0 1.0
+    type: step
+    data: 5
+  index15:
+    offset: 1.0 -1.0 0.0
+    type: iron_block
+    data: 0
+  index16:
+    offset: 1.0 0.0 -1.0
+    type: step
+    data: 5
+  index17:
+    offset: 1.0 0.0 0.0
+    type: iron_block
+    data: 0
+  index18:
+    offset: 1.0 0.0 1.0
+    type: step
+    data: 5
+  index19:
+    offset: 1.0 1.0 1.0
+    type: smooth_brick
+    data: 0
+  index20:
+    offset: 1.0 2.0 0.0
+    type: smooth_brick
+    data: 0
+  index21:
+    offset: 1.0 3.0 0.0
+    type: step
+    data: 5
+part4:
+  type: left_leg
+  offsets:
+  - 0.0 0.0 0.0
+  index0:
+    offset: -2.0 -2.0 -1.0
+    type: iron_block
+    data: 0
+  index1:
+    offset: -2.0 -2.0 0.0
+    type: iron_block
+    data: 0
+  index2:
+    offset: -2.0 -2.0 1.0
+    type: iron_block
+    data: 0
+  index3:
+    offset: -2.0 -1.0 -1.0
+    type: step
+    data: 5
+  index4:
+    offset: -2.0 -1.0 0.0
+    type: smooth_brick
+    data: 0
+  index5:
+    offset: -2.0 -1.0 1.0
+    type: step
+    data: 5

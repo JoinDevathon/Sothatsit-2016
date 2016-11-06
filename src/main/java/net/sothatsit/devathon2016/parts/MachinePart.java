@@ -2,6 +2,8 @@ package net.sothatsit.devathon2016.parts;
 
 import net.sothatsit.devathon2016.blocks.Offset;
 import net.sothatsit.devathon2016.blocks.Schematic;
+import net.sothatsit.devathon2016.model.Model;
+import org.bukkit.Location;
 import org.bukkit.configuration.ConfigurationSection;
 
 import java.util.ArrayList;
@@ -34,6 +36,12 @@ public class MachinePart {
 
     public Schematic getSchematic() {
         return this.schematic;
+    }
+
+    public Model generateModel(Location anchorPoint) {
+        Offset offset = (this.offsets.length == 0 ? new Offset(0, 0, 0) : this.offsets[0]);
+
+        return Model.fromSchematic(this.schematic, anchorPoint, offset);
     }
 
     public void saveTo(ConfigurationSection section) {

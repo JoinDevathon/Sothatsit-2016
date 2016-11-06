@@ -22,6 +22,10 @@ public class Schematic {
         this.blocks = blocks;
     }
 
+    public List<Pair<Offset, BlockData>> getBlocks() {
+        return this.blocks;
+    }
+
     public void addBlock(Offset offset, BlockData blockData) {
         if(getBlock(offset) != null) {
             throw new IllegalArgumentException("There already exists a block with that offset");

@@ -59,7 +59,7 @@ public class PartsCommand implements CommandExecutor {
 
             MachinePart part = parts[random.nextInt(parts.length)];
 
-            part.getSchematic().place(player.getLocation());
+            part.generateModel(player.getLocation());
 
             this.send(sender, "&aPlaced a " + part.getType().getName() + " part");
             return true;

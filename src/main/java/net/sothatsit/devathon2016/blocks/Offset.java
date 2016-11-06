@@ -4,25 +4,25 @@ import org.bukkit.Location;
 
 public class Offset {
 
-    private int x;
-    private int y;
-    private int z;
+    private final double x;
+    private final double y;
+    private final double z;
 
-    public Offset(int x, int y, int z) {
+    public Offset(double x, double y, double z) {
         this.x = x;
         this.y = y;
         this.z = z;
     }
 
-    public int getX() {
+    public double getX() {
         return this.x;
     }
 
-    public int getY() {
+    public double getY() {
         return this.y;
     }
 
-    public int getZ() {
+    public double getZ() {
         return this.z;
     }
 
@@ -32,6 +32,14 @@ public class Offset {
 
     public Offset subtract(Offset other) {
         return new Offset(this.x - other.x, this.y - other.y, this.z - other.z);
+    }
+
+    public Offset multiply(double val) {
+        return new Offset(this.x * val, this.y * val, this.z * val);
+    }
+
+    public Offset add(double x, double y, double z) {
+        return new Offset(this.x + x, this.y + y, this.z + z);
     }
 
     @Override
@@ -46,12 +54,12 @@ public class Offset {
             return null;
         }
 
-        int x, y, z;
+        double x, y, z;
 
         try {
-            x = Integer.valueOf(split[0]);
-            y = Integer.valueOf(split[1]);
-            z = Integer.valueOf(split[2]);
+            x = Double.valueOf(split[0]);
+            y = Double.valueOf(split[1]);
+            z = Double.valueOf(split[2]);
         } catch(NumberFormatException exception) {
             return null;
         }
@@ -61,7 +69,7 @@ public class Offset {
 
     @Override
     public int hashCode() {
-        return Integer.hashCode(this.x) ^ Integer.hashCode(this.y) ^ Integer.hashCode(this.z);
+        return Double.hashCode(this.x) ^ Double.hashCode(this.y) ^ Double.hashCode(this.z);
     }
 
     @Override

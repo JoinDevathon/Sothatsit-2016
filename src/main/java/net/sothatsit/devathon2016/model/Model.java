@@ -1,13 +1,21 @@
 package net.sothatsit.devathon2016.model;
 
+import net.sothatsit.devathon2016.blocks.BlockData;
 import net.sothatsit.devathon2016.blocks.Offset;
+import net.sothatsit.devathon2016.blocks.Schematic;
 import net.sothatsit.devathon2016.util.Pair;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.entity.ArmorStand;
+import org.bukkit.inventory.ItemStack;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Model {
+
+    private static final double ARMOUR_STAND_BLOCK_SIZE = 0.625;
+    private static final double ARMOUR_STAND_BLOCK_Y_OFFSET = ARMOUR_STAND_BLOCK_SIZE - 2;
 
     private Set<Pair<Offset, ArmorStand>> armorStands;
 
@@ -48,6 +56,38 @@ public class Model {
         }
 
         this.armorStands.clear();
+    }
+
+    public static Model fromSchematic(Schematic schematic, Location anchorPoint, Offset offset) {
+        anchorPoint.setPitch(0f);
+        anchorPoint.setYaw(0f);
+
+        World world = anchorPoint.getWorld();
+        Location offsetAnchor = offset.addTo(anchorPoint);
+
+        Set<Pair<Offset, ArmorStand>> armorStands = new HashSet<>();
+
+        for(Pair<Offset, BlockData> pair : schematic.getBlocks()) {
+            Offset blockOffset = pair.getFirst()
+                    .multiply(ARMOUR_STAND_BLOCK_SIZE)
+                    .add(0, ARMOUR_STAND_BLOCK_Y_OFFSET, 0);
+
+            BlockData blockData = pair.getSecond();
+
+            Location loc = blockOffset.addTo(offsetAnchor);
+            ItemStack block = blockData.createItemStack();
+
+            ArmorStand armorStand = world.spawn(loc, ArmorStand.class);
+
+            armorStand.setHelmet(block);
+            armorStand.setVisible(false);
+            armorStand.setGravity(false);
+            armorStand.setMarker(false);
+
+            armorStands.add(new Pair<>(blockOffset, armorStand));
+        }
+
+        return new Model(anchorPoint, offset, armorStands);
     }
 
 }

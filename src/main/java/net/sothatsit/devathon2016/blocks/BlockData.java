@@ -3,6 +3,7 @@ package net.sothatsit.devathon2016.blocks;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.inventory.ItemStack;
 
 public class BlockData {
 
@@ -24,6 +25,10 @@ public class BlockData {
 
     public int getData() {
         return this.data;
+    }
+
+    public ItemStack createItemStack() {
+        return new ItemStack(this.type, 1, (short) this.data);
     }
 
     public void applyTo(Block block) {
