@@ -13,7 +13,12 @@ public enum PartType {
     }
 
     public static PartType fromName(String name) {
-        return PartType.valueOf(name.toUpperCase());
+        for(PartType type : PartType.values()) {
+            if(type.getName().equalsIgnoreCase(name)) {
+                return type;
+            }
+        }
+        return null;
     }
 
 }
