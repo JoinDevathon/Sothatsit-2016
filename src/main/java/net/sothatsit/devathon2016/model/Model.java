@@ -14,8 +14,8 @@ import java.util.Set;
 
 public class Model {
 
-    private static final double ARMOUR_STAND_BLOCK_SIZE = 0.625;
-    private static final double ARMOUR_STAND_BLOCK_Y_OFFSET = ARMOUR_STAND_BLOCK_SIZE - 2;
+    public static final double ARMOUR_STAND_BLOCK_SIZE = 0.625;
+    public static final double ARMOUR_STAND_BLOCK_Y_OFFSET = ARMOUR_STAND_BLOCK_SIZE - 2;
 
     private Set<Pair<Offset, ArmorStand>> armorStands;
 
@@ -50,7 +50,7 @@ public class Model {
         }
     }
 
-    public void destroy() {
+    public void remove() {
         for(Pair<Offset, ArmorStand> pair : this.armorStands) {
             pair.getSecond().remove();
         }

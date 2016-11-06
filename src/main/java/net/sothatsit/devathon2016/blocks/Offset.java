@@ -30,6 +30,10 @@ public class Offset {
         return location.clone().add(this.x, this.y, this.z);
     }
 
+    public Offset add(Offset other) {
+        return new Offset(this.x + other.x, this.y + other.y, this.z + other.z);
+    }
+
     public Offset subtract(Offset other) {
         return new Offset(this.x - other.x, this.y - other.y, this.z - other.z);
     }

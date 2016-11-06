@@ -26,12 +26,8 @@ public class MachinePart {
         return this.type;
     }
 
-    public Offset getOffset(int index) {
-        return this.offsets[index];
-    }
-
-    public int getOffsetCount() {
-        return this.offsets.length;
+    public Offset[] getOffsets() {
+        return this.offsets;
     }
 
     public Schematic getSchematic() {

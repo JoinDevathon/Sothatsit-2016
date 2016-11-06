@@ -1,5 +1,6 @@
 package net.sothatsit.devathon2016;
 
+import net.sothatsit.devathon2016.machine.MachineManager;
 import net.sothatsit.devathon2016.parts.PartManager;
 import net.sothatsit.devathon2016.parts.PartsCommand;
 import net.sothatsit.devathon2016.selection.SelectionManager;
@@ -8,21 +9,20 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class BattleMachines extends JavaPlugin {
 
-    private SelectionManager selectionManager;
-    private PartManager partManager;
-
     @Override
     public void onEnable() {
-        this.selectionManager = new SelectionManager();
-        this.partManager = new PartManager(this);
+        SelectionManager selectionManager = new SelectionManager();
+        PartManager partManager = new PartManager(this);
+        MachineManager machineManager = new MachineManager(this, partManager);
 
-        this.partManager.reloadParts();
+        partManager.reloadParts();
 
-        PartsCommand partsCommand = new PartsCommand(this, this.selectionManager, this.partManager);
+        Bukkit.getPluginManager().registerEvents(selectionManager, this);
+        Bukkit.getPluginManager().registerEvents(machineManager, this);
 
-        Bukkit.getPluginManager().registerEvents(this.selectionManager, this);
+        PartsCommand partsCommand = new PartsCommand(this, selectionManager, partManager);
 
-        this.getCommand("bmselect").setExecutor(this.selectionManager);
+        this.getCommand("bmselect").setExecutor(selectionManager);
         this.getCommand("bmparts").setExecutor(partsCommand);
     }
 
