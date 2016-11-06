@@ -31,6 +31,7 @@ public class Machine {
                    AnimatedModel leftArm, AnimatedModel rightArm) {
         this.player = player;
 
+        this.location = location;
         this.seat = seat;
 
         this.leftLeg = leftLeg;
@@ -45,7 +46,7 @@ public class Machine {
     }
 
     public void tick() {
-        if(this.player.getPassenger() != this.seat) {
+        if(this.seat.getPassenger() != this.player) {
             this.remove();
             return;
         }
