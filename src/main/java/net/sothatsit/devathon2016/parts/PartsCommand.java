@@ -1,7 +1,9 @@
 package net.sothatsit.devathon2016.parts;
 
+import net.sothatsit.devathon2016.BattleMachines;
 import net.sothatsit.devathon2016.blocks.Offset;
 import net.sothatsit.devathon2016.blocks.Schematic;
+import net.sothatsit.devathon2016.model.Model;
 import net.sothatsit.devathon2016.selection.Selection;
 import net.sothatsit.devathon2016.selection.SelectionManager;
 import org.bukkit.ChatColor;
@@ -9,15 +11,18 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Random;
 
 public class PartsCommand implements CommandExecutor {
 
+    private BattleMachines plugin;
     private SelectionManager selectionManager;
     private PartManager partManager;
 
-    public PartsCommand(SelectionManager selectionManager, PartManager partManager) {
+    public PartsCommand(BattleMachines plugin, SelectionManager selectionManager, PartManager partManager) {
+        this.plugin = plugin;
         this.selectionManager = selectionManager;
         this.partManager = partManager;
     }
@@ -59,7 +64,19 @@ public class PartsCommand implements CommandExecutor {
 
             MachinePart part = parts[random.nextInt(parts.length)];
 
-            part.generateModel(player.getLocation());
+            Model model = part.generateModel(player.getLocation());
+
+            new BukkitRunnable() {
+                private int index = 0;
+
+                @Override
+                public void run() {
+                    index++;
+                    index %= part.getOffsetCount();
+
+                    model.setOffset(part.getOffset(index));
+                }
+            }.runTaskTimer(this.plugin, 10, 10);
 
             this.send(sender, "&aPlaced a " + part.getType().getName() + " part");
             return true;

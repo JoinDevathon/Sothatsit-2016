@@ -18,7 +18,7 @@ public class BattleMachines extends JavaPlugin {
 
         this.partManager.reloadParts();
 
-        PartsCommand partsCommand = new PartsCommand(this.selectionManager, this.partManager);
+        PartsCommand partsCommand = new PartsCommand(this, this.selectionManager, this.partManager);
 
         Bukkit.getPluginManager().registerEvents(this.selectionManager, this);
 
