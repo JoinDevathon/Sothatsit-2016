@@ -72,13 +72,13 @@ public class Schematic {
 
             ConfigurationSection blockSection = section.createSection("index" + index);
 
-            offset.saveTo(blockSection);
+            blockSection.set("offset", offset.toString());
             blockData.saveTo(blockSection);
         }
     }
 
     public static Schematic loadFrom(ConfigurationSection section, Logger logger) {
-        List<Pair<Offset, BlockData>> blocks = new ArrayList<>();
+        Schematic schematic = new Schematic();
 
         for(String key : section.getKeys(false)) {
             if(!section.isConfigurationSection(key)) {
@@ -87,21 +87,28 @@ public class Schematic {
 
             ConfigurationSection blockSection = section.getConfigurationSection(key);
 
-            Offset offset = Offset.loadFrom(blockSection);
-            BlockData blockData = BlockData.loadFrom(blockSection);
-
-            if(offset == null || blockData == null) {
-                logger.severe("Unable to load offset and/or block data from \"" + blockSection.getCurrentPath() + "\"");
+            if(!blockSection.isSet("offset") || !blockSection.isString("offset")) {
+                logger.severe("Offset unset at \"" + blockSection.getCurrentPath() + "\"");
                 return null;
             }
+
+            Offset offset = Offset.fromString(blockSection.getString("offset"));
+            BlockData blockData = BlockData.loadFrom(blockSection);
+
+            if(offset == null) {
+                logger.severe("Unable to load offset from \"" + blockSection.getCurrentPath() + "\"");
+                return null;
+            }
+
+            if(blockData == null) {
+                logger.severe("Unable to load block data from \"" + blockSection.getCurrentPath() + "\"");
+                return null;
+            }
+
+            schematic.addBlock(offset, blockData);
         }
 
-        if(blocks.size() == 0) {
-            logger.severe("Empty schematic at \"" + section.getCurrentPath() + "\"");
-            return null;
-        }
-
-        return null;
+        return schematic;
     }
 
 }
