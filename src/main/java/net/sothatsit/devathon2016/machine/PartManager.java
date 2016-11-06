@@ -40,6 +40,10 @@ public class PartManager {
         return parts;
     }
 
+    public Set<MachinePart> getParts() {
+        return this.parts;
+    }
+
     public void addPart(MachinePart part) {
         this.parts.add(part);
     }

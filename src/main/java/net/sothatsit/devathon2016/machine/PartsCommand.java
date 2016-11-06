@@ -10,6 +10,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.Random;
+
 public class PartsCommand implements CommandExecutor {
 
     private SelectionManager selectionManager;
@@ -35,6 +37,31 @@ public class PartsCommand implements CommandExecutor {
             this.partManager.reloadParts();
 
             this.send(sender, "&aReloaded the parts config.");
+            return true;
+        }
+
+        // TEST COMMAND
+        if(args[0].equalsIgnoreCase("place")) {
+            Random random = new Random();
+            MachinePart[] parts = this.partManager.getParts().toArray(new MachinePart[0]);
+
+            if(parts.length == 0) {
+                this.send(sender, "&cThere are no parts");
+                return true;
+            }
+
+            if(!(sender instanceof Player)) {
+                this.send(sender, "&cSorry, you must be a player to run this command.");
+                return true;
+            }
+
+            Player player = (Player) sender;
+
+            MachinePart part = parts[random.nextInt(parts.length)];
+
+            part.getSchematic().place(player.getLocation());
+
+            this.send(sender, "&aPlaced a " + part.getType().getName() + " part");
             return true;
         }
 
@@ -75,7 +102,7 @@ public class PartsCommand implements CommandExecutor {
     }
 
     private String getValidCommand() {
-        StringBuilder builder = new StringBuilder("/bmparts <reload:");
+        StringBuilder builder = new StringBuilder("/bmparts <reload:place");
 
         for(PartType type : PartType.values()) {
             builder.append(':').append(type.getName());
