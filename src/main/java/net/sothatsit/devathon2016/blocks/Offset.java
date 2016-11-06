@@ -46,6 +46,20 @@ public class Offset {
         return new Offset(this.x + x, this.y + y, this.z + z);
     }
 
+    public Offset rotate(double angle) {
+        angle = Math.toRadians(angle);
+
+        return this.rotate(Math.cos(angle), Math.sin(angle));
+    }
+
+    public Offset rotate(double cos, double sin) {
+        double x = this.x * cos - this.z * sin;
+        double y = this.y;
+        double z = this.z * cos + this.x * sin;
+
+        return new Offset(x, y, z);
+    }
+
     @Override
     public String toString() {
         return this.x + " " + this.y + " " + this.z;

@@ -32,45 +32,30 @@ public class Model {
 
     public void moveTo(Location location) {
         this.location = location;
+        this.yaw = location.getYaw();
 
         this.recalcPositions();
     }
 
     public void setOffset(Offset offset) {
         this.offset = offset.multiply(ARMOUR_STAND_BLOCK_SIZE);
-
-        this.recalcPositions();
-    }
-
-    public void setYaw(float yaw) {
-        this.yaw = yaw;
-
-        this.recalcPositions();
     }
 
     public void recalcPositions() {
         double cos = Math.cos(Math.toRadians(this.yaw));
         double sin = Math.sin(Math.toRadians(this.yaw));
 
-        Offset rotatedOffset = this.rotateOffset(this.offset, cos, sin);
+        Offset rotatedOffset = this.offset.rotate(cos, sin);
         Location location = rotatedOffset.addTo(this.location);
 
         for(Pair<Offset, ArmorStand> pair : this.armorStands) {
-            Offset blockOffsetRotated = this.rotateOffset(pair.getFirst(), cos, sin);
+            Offset blockOffsetRotated = pair.getFirst().rotate(cos, sin);
             Location position = blockOffsetRotated.addTo(location);
 
             position.setYaw(this.yaw + 180f);
 
             pair.getSecond().teleport(position);
         }
-    }
-
-    private Offset rotateOffset(Offset offset, double cos, double sin) {
-        double x = offset.getX() * cos - offset.getZ() * sin;
-        double y = offset.getY();
-        double z = offset.getZ() * cos + offset.getX() * sin;
-
-        return new Offset(x, y, z);
     }
 
     public void remove() {

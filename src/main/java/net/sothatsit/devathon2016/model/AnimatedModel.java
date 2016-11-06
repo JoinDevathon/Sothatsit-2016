@@ -1,6 +1,7 @@
 package net.sothatsit.devathon2016.model;
 
 import net.sothatsit.devathon2016.blocks.Offset;
+import org.bukkit.Location;
 
 public class AnimatedModel {
 
@@ -62,8 +63,8 @@ public class AnimatedModel {
         this.model.setOffset(offset);
     }
 
-    public void setYaw(float yaw) {
-        this.model.setYaw(yaw);
+    public void moveTo(Location location) {
+        this.model.moveTo(location);
     }
 
     public void remove() {
