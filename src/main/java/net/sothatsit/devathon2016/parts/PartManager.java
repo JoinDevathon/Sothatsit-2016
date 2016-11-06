@@ -73,6 +73,8 @@ public class PartManager {
     }
 
     public void reloadParts() {
+        this.plugin.reloadConfig();
+
         this.reloadParts(this.plugin.getConfig(), this.plugin.getLogger());
     }
 
