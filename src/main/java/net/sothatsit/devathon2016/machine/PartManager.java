@@ -5,17 +5,39 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.logging.Logger;
 
 public class PartManager implements CommandExecutor {
 
+    private Random random = new Random();
     private Set<MachinePart> parts = new HashSet<>();
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         return false;
+    }
+
+    public MachinePart getRandomPart(PartType type) {
+        List<MachinePart> parts = this.getParts(type);
+
+        if(parts.size() == 0) {
+            return null;
+        }
+
+        return parts.get(random.nextInt(parts.size()));
+    }
+
+    public List<MachinePart> getParts(PartType type) {
+        List<MachinePart> parts = new ArrayList<>();
+
+        for(MachinePart part : this.parts) {
+            if(part.getType() == type) {
+                parts.add(part);
+            }
+        }
+
+        return parts;
     }
 
     public void saveParts(ConfigurationSection section) {
@@ -36,7 +58,7 @@ public class PartManager implements CommandExecutor {
         logger.info("Reloading Machine Parts...");
 
         this.parts.clear();
-        
+
         for(String key : section.getKeys(false)) {
             if(!section.isConfigurationSection(key)) {
                 continue;
