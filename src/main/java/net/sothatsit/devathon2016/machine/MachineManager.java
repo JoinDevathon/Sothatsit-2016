@@ -72,7 +72,10 @@ public class MachineManager implements Listener, Runnable {
 
         Location location = player.getLocation().add(0, Model.ARMOUR_STAND_BLOCK_SIZE * 3, 0);
 
-        Location seatLocation = location.clone().subtract(0, Model.ARMOUR_STAND_BLOCK_Y_OFFSET, 0);
+        location.setYaw(180f);
+        location.setPitch(0f);
+
+        Location seatLocation = location.clone();
         ArmorStand seat = player.getWorld().spawn(seatLocation, ArmorStand.class);
 
         seat.setVisible(false);

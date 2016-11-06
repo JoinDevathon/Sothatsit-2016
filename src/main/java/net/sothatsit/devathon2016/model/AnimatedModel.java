@@ -62,6 +62,10 @@ public class AnimatedModel {
         this.model.setOffset(offset);
     }
 
+    public void setYaw(float yaw) {
+        this.model.setYaw(yaw);
+    }
+
     public void remove() {
         this.model.remove();
     }

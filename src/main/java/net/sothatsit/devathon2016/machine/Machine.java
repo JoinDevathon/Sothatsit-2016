@@ -24,6 +24,8 @@ public class Machine {
     private AnimatedModel leftArm;
     private AnimatedModel rightArm;
 
+    private float yaw;
+
     private boolean removed;
 
     public Machine(Player player, Location location, ArmorStand seat,
@@ -40,9 +42,27 @@ public class Machine {
         this.leftArm = leftArm;
         this.rightArm = rightArm;
 
+        this.yaw = 0f;
+
         this.removed = false;
 
         this.seat.setPassenger(player);
+    }
+
+    public void setYaw(float yaw) {
+        this.yaw = yaw % 360;
+
+        this.leftLeg.setYaw(this.yaw);
+        this.rightLeg.setYaw(this.yaw);
+        this.body.setYaw(this.yaw);
+        this.leftArm.setYaw(this.yaw);
+        this.rightArm.setYaw(this.yaw);
+
+        Location seatLocation = this.seat.getLocation();
+
+        seatLocation.setYaw(this.yaw);
+
+        this.seat.teleport(seatLocation);
     }
 
     public void tick() {
@@ -56,6 +76,8 @@ public class Machine {
         this.body.tick();
         this.leftArm.tick();
         this.rightArm.tick();
+
+        this.setYaw(this.yaw + 5f);
     }
 
     public void remove() {
@@ -77,9 +99,9 @@ public class Machine {
     public void createDamageEffect() {
         World world = this.seat.getWorld();
 
-        double x = random.nextGaussian() * 4 + this.location.getX();
-        double y = random.nextGaussian() * 4 + this.location.getY();
-        double z = random.nextGaussian() * 4 + this.location.getZ();
+        double x = random.nextGaussian() * 2 + this.location.getX();
+        double y = random.nextGaussian() * 2 + this.location.getY();
+        double z = random.nextGaussian() * 2 + this.location.getZ();
 
         world.createExplosion(x, y, z, 0f);
     }
