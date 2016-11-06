@@ -3,7 +3,7 @@ package net.sothatsit.devathon2016.machine;
 import net.sothatsit.devathon2016.blocks.Offset;
 import net.sothatsit.devathon2016.blocks.Schematic;
 
-public class MachinePiece {
+public abstract class MachinePiece {
 
     private Offset[] offsets;
     private Schematic schematic;

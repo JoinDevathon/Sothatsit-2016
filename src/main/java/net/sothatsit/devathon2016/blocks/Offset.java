@@ -50,4 +50,20 @@ public class Offset {
         return new Offset(x, y, z);
     }
 
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(this.x) ^ Integer.hashCode(this.y) ^ Integer.hashCode(this.z);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Offset) {
+            Offset other = (Offset) obj;
+
+            return other.x == this.x && other.y == this.y && other.z == this.z;
+        } else {
+            return false;
+        }
+    }
+
 }

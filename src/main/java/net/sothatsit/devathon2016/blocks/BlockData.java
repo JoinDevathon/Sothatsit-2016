@@ -9,6 +9,10 @@ public class BlockData {
     private Material type;
     private int data;
 
+    public BlockData(Block block) {
+        this(block.getType(), block.getData());
+    }
+
     public BlockData(Material type, int data) {
         this.type = type;
         this.data = data;

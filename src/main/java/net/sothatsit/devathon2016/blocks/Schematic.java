@@ -14,8 +14,29 @@ public class Schematic {
 
     private List<Pair<Offset, BlockData>> blocks;
 
+    public Schematic() {
+        this(new ArrayList<>());
+    }
+
     public Schematic(List<Pair<Offset, BlockData>> blocks) {
         this.blocks = blocks;
+    }
+
+    public void addBlock(Offset offset, BlockData blockData) {
+        if(getBlock(offset) != null) {
+            throw new IllegalArgumentException("There already exists a block with that offset");
+        }
+
+        this.blocks.add(new Pair<>(offset, blockData));
+    }
+
+    public BlockData getBlock(Offset offset) {
+        for(Pair<Offset, BlockData> pair : this.blocks) {
+            if(pair.getFirst().equals(offset)) {
+                return pair.getSecond();
+            }
+        }
+        return null;
     }
 
     public void place(Location location) {
