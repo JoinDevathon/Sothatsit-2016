@@ -30,6 +30,10 @@ public class Offset {
         return location.add(this.x, this.y, this.z);
     }
 
+    public Offset subtract(Offset other) {
+        return new Offset(this.x - other.x, this.y - other.y, this.z - other.z);
+    }
+
     @Override
     public String toString() {
         return this.x + " " + this.y + " " + this.z;

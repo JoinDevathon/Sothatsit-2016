@@ -71,7 +71,7 @@ public class Selection {
         for(int x = fromX; x <= toX; x++) {
             for(int y = fromY; y <= toY; y++) {
                 for(int z = fromZ; z <= toZ; z++) {
-                    Location loc = this.pos1.add(x, y, z);
+                    Location loc = anchorPoint.add(x, y, z);
                     Block block = loc.getBlock();
 
                     if(block.getType() == Material.AIR) {
