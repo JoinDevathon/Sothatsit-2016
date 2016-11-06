@@ -26,7 +26,7 @@ public class AnimatedModel {
         this.offsetIndex = offsets.length;
 
         this.lastOffset = offsets[0];
-        this.offset = offsets[this.offsetIndex];
+        this.offset = offsets[0];
 
         this.ticksPerOffset = ticksPerOffset;
         this.ticksSpent = 0;
