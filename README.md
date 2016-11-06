@@ -5,7 +5,12 @@ A Spigot plugin made for the 2016 Devathon.
 Ride around massive battle machines to fight it out with your opponents.
 
 ### How to use
-When you log in you will be placed in your battle machine. You can look around to move around.
+When you log in you will be placed in your battle machine.
+You can look around to move around and your machine will automatically shoot.
+
+It works better if you find a flat area.
+
+Also, don't forget to check it out in 3rd person!
 
 If you die or exit your battle machine you can get a new one by doing /bmachines.
 
