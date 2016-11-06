@@ -31,21 +31,27 @@ public class Offset {
         return location.add(this.x, this.y, this.z);
     }
 
-    public void saveTo(ConfigurationSection section) {
-        section.set("x", this.x);
-        section.set("y", this.y);
-        section.set("z", this.z);
+    @Override
+    public String toString() {
+        return this.x + " " + this.y + " " + this.z;
     }
 
-    public static Offset loadFrom(ConfigurationSection section) {
-        if(!section.isSet("x") || !section.isSet("y") || !section.isSet("z")
-                || !section.isInt("x") || !section.isInt("y") || !section.isInt("z")) {
+    public static Offset fromString(String string) {
+        String[] split = string.split(" ");
+
+        if(split.length != 3) {
             return null;
         }
 
-        int x = section.getInt("x");
-        int y = section.getInt("y");
-        int z = section.getInt("z");
+        int x, y, z;
+
+        try {
+            x = Integer.valueOf(split[0]);
+            y = Integer.valueOf(split[1]);
+            z = Integer.valueOf(split[2]);
+        } catch(NumberFormatException exception) {
+            return null;
+        }
 
         return new Offset(x, y, z);
     }
