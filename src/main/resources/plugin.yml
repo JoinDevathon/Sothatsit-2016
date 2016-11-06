@@ -5,3 +5,7 @@ author: Sothatsit
 
 main: net.sothatsit.devathon2016.BattleMachines
 
+commands:
+  bmselect:
+    description: 'Make a Battle Machines selection'
+    default: op
