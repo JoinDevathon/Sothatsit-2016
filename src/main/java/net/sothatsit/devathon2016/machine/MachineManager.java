@@ -76,7 +76,7 @@ public class MachineManager implements Listener, Runnable {
         ArmorStand seat = player.getWorld().spawn(seatLocation, ArmorStand.class);
 
         seat.setVisible(false);
-        seat.setInvulnerable(true);
+        seat.setGravity(false);
         seat.setMarker(true);
 
         MovingModel leftLeg = this.generateMovingModel(location, PartType.LEFT_LEG);
