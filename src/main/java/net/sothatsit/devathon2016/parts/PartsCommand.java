@@ -3,7 +3,6 @@ package net.sothatsit.devathon2016.parts;
 import net.sothatsit.devathon2016.BattleMachines;
 import net.sothatsit.devathon2016.blocks.Offset;
 import net.sothatsit.devathon2016.blocks.Schematic;
-import net.sothatsit.devathon2016.model.Model;
 import net.sothatsit.devathon2016.selection.Selection;
 import net.sothatsit.devathon2016.selection.SelectionManager;
 import org.bukkit.ChatColor;
@@ -11,9 +10,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitRunnable;
-
-import java.util.Random;
 
 public class PartsCommand implements CommandExecutor {
 
@@ -82,7 +78,7 @@ public class PartsCommand implements CommandExecutor {
     }
 
     private String getValidCommand() {
-        StringBuilder builder = new StringBuilder("/bmparts <reload:place");
+        StringBuilder builder = new StringBuilder("/bmparts <reload");
 
         for(PartType type : PartType.values()) {
             builder.append(':').append(type.getName());

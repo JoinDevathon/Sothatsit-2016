@@ -10,5 +10,5 @@ commands:
     description: 'Make a Battle Machines selection'
   bmparts:
     description: 'Add new Battle Machines parts'
-  bmachine:
-    description: 'Get a new battle parts'
+  bmachines:
+    description: 'Get a new Battle Machine'

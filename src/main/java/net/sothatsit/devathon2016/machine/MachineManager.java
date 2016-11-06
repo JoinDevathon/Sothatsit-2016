@@ -38,6 +38,14 @@ public class MachineManager implements Listener, Runnable {
         Bukkit.getScheduler().runTaskTimer(plugin, this, 1, 1);
     }
 
+    public void removeAll() {
+        for(Machine machine : this.machines.values()) {
+            machine.remove();
+        }
+
+        this.machines.clear();
+    }
+
     @Override
     public void run() {
         Iterator<Machine> iterator = this.machines.values().iterator();
